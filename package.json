@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:buildapk": "cd android && ./gradlew assembleRelease",
+    "android:testbuild": "cross-env BUILD_TYPE=dev  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res & cd android & ./gradlew assembleDebug & cd ..",
     "android:clean": "cd android && gradlew.bat clean",
     "ios": "react-native run-ios",
     "lint": "eslint .",
