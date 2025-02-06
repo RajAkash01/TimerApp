@@ -50,7 +50,7 @@ const TimerApp = () => {
       remaining: parseInt(duration),
       category,
       status: 'Paused',
-      halfwayAlert: false, // Default halfway alert as false
+      halfwayAlert: false,
       halfwayDuration: Math.floor(parseInt(duration) / 2),
     };
     saveTimers([...timers, newTimer]);
@@ -109,14 +109,13 @@ const TimerApp = () => {
             [timer.id]: progress,
           }));
 
-          // Check if it's halfway through the timer and the alert hasn't been shown yet
           if (timer.halfwayAlert && timer.remaining === timer.halfwayDuration) {
             Alert.alert(
               'Halfway Alert!',
               `${timer.name} has reached halfway (${timer.halfwayDuration} seconds).`,
             );
-            // Disable the halfway alert after it has been triggered
-            timer.halfwayAlert = false; // Disable alert after it's triggered
+
+            timer.halfwayAlert = false;
           }
 
           return {...timer, remaining: timer.remaining - 1};
